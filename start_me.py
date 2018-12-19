@@ -7,7 +7,7 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 @app.route('/')
 def index():
-    return render_template('upload.html')
+    return render_template('ZTESTupload.html')
 
 @app.route('/upload',methods = ['POST'])
 def upload():
@@ -23,7 +23,7 @@ def upload():
         destination = '/'.join([target,filename])
         print(destination)
         file.save(destination)
-    return render_template('complete.html')
+    return render_template('ZTESTcomplete.html')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

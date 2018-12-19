@@ -15,7 +15,7 @@ def index():
 @app.route('/upload',methods=['POST'])
 def upload():
     s3 = boto3.resource('s3')
-    s3.Bucket(bucket_name).put_object(Key='example.py',Body=request.files['myfile'])
+    s3.Bucket(bucket_name).put_object(Key='example.jpg',Body=request.files['myfile'])
 
     return '<h1>File saved to S3</h1>'
 
