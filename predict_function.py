@@ -30,13 +30,12 @@ data = get_data(sz, bs)
 
 learn = ConvLearner.pretrained(arch, data, precompute=False)
 learn.load('299_pre')
+root = 'app_data/prediction_images/'
+trn_tfms, val_tfms = tfms_from_model(arch, sz)
 
 def prediction(fn):
-    root = 'app_data/prediction_images/'
     img = plt.imread(root+fn)
     plt.imshow(img);
-
-    trn_tfms, val_tfms = tfms_from_model(arch, sz)
     ds = FilesIndexArrayDataset([fn], np.array([0]), val_tfms,root)
     dl = DataLoader(ds)
     preds = learn.predict_dl(dl)
@@ -46,13 +45,20 @@ def prediction(fn):
     print('Other likely breeds: {0}, {1}, {2}, {3}'.format(*likelies))
 
 def pred_output(fn):
-    root = 'app_data/prediction_images/'
-    trn_tfms, val_tfms = tfms_from_model(arch, sz)
     ds = FilesIndexArrayDataset([fn], np.array([0]), val_tfms,root)
     dl = DataLoader(ds)
     preds = learn.predict_dl(dl)
     prediction = learn.data.classes[np.argmax(preds)]
-    return prediction    
+    return prediction
+
+def pred_outputs(fn):
+    ds = FilesIndexArrayDataset([fn], np.array([0]), val_tfms,root)
+    dl = DataLoader(ds)
+    preds = learn.predict_dl(dl)
+    prediction = learn.data.classes[np.argmax(preds)]
+    likelies = [learn.data.classes[breed] for breed in np.argsort(preds)[0][-5:]][3::-1]
+    print('Prediction: {}'.format(prediction.capitalize()))
+    print('Other likely breeds: {0}, {1}, {2}, {3}'.format(*likelies))
     
 if __name__ == '__main__':
     test_output = pred_output('boxer_test.jpeg')
