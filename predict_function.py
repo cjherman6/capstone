@@ -55,5 +55,5 @@ def pred_output(fn):
     return prediction    
     
 if __name__ == '__main__':
-    test_output = pred_output('aawl1.jpg')
+    test_output = pred_output('boxer_test.jpeg')
     print(test_output)
