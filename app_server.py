@@ -1,6 +1,8 @@
 import os
 from flask import Flask, render_template, request, send_from_directory
 import predict_function as pf
+import recommender_function as rf
+import pickle
 
 app = Flask(__name__)
 
@@ -53,8 +55,25 @@ def get_gallery():
     print(predictions)
     print(likelies)
     
-#     return render_template('gallery.html', image_names=image_names,predictions=predictions)
     return render_template('gallery.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
+
+@app.route('/recommendation')
+def recommendation():
+    pickle_in = open('app_data/translation_dict.pickle','rb')
+    translation_dict = pickle.load(pickle_in)
+    predictions = []
+    target = os.path.join(APP_ROOT, 'images/')
+    image_names = os.listdir('./images')
+    for image_name in image_names:
+        destination = '/'.join([target,image_name])
+        predictions.append(pf.pred_output(destination))
+    print(predictions)
+    breeds = [translation_dict[breed] for breed in predictions]
+    print(breeds)
+    recommendations = rf.predictions_recommender('cavalier-king-charles-spaniel',breeds)
+    print(recommendations)
     
+    return render_template('recommendation.html',predictions=predictions,recommendations=recommendations)
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
