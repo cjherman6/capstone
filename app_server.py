@@ -41,15 +41,19 @@ def send_image(filename):
 @app.route('/gallery')
 def get_gallery():
     predictions = []
+    likelies = []
     target = os.path.join(APP_ROOT, 'images/')
     image_names = os.listdir('./images')
     print(image_names)
     for image_name in image_names:
         destination = '/'.join([target,image_name])
-        predictions.append((pf.pred_output(destination)))
+        predictions.append(pf.pred_output(destination))
+        likelies.append(pf.pred_likelies(destination))
     print(predictions)
+    print(likelies)
+    
 #     return render_template('gallery.html', image_names=image_names,predictions=predictions)
-    return render_template('gallery.html', image_names=image_names, image_predictions=zip(image_names,predictions))
+    return render_template('gallery.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
     
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

@@ -49,16 +49,16 @@ def pred_output(fn):
     dl = DataLoader(ds)
     preds = learn.predict_dl(dl)
     prediction = learn.data.classes[np.argmax(preds)]
+    prediction = ' '.join(prediction.split('_')).title()
     return prediction
 
-def pred_outputs(fn):
+def pred_likelies(fn):
     ds = FilesIndexArrayDataset([fn], np.array([0]), val_tfms,root)
     dl = DataLoader(ds)
     preds = learn.predict_dl(dl)
-    prediction = learn.data.classes[np.argmax(preds)]
     likelies = [learn.data.classes[breed] for breed in np.argsort(preds)[0][-5:]][3::-1]
-    print('Prediction: {}'.format(prediction.capitalize()))
-    print('Other likely breeds: {0}, {1}, {2}, {3}'.format(*likelies))
+    likelies = [x.replace('-',' ').replace('_',' ').title() for x in likelies]
+    return likelies
     
 if __name__ == '__main__':
     test_output = pred_output('boxer_test.jpeg')
