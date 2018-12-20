@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request, send_from_directory
+import predict_function as pf
 
 app = Flask(__name__)
 
@@ -39,9 +40,15 @@ def send_image(filename):
 
 @app.route('/gallery')
 def get_gallery():
+    predictions = []
+    target = os.path.join(APP_ROOT, 'images/')
     image_names = os.listdir('./images')
     print(image_names)
-    return render_template('gallery.html', image_names=image_names)
+    for image_name in image_names:
+        destination = '/'.join([target,image_name])
+        predictions.append((image_name,pf.pred_output(destination)))
+    print(predictions)
+    return render_template('gallery.html', image_names=image_names,predictions=predictions)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

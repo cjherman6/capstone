@@ -30,7 +30,7 @@ data = get_data(sz, bs)
 
 learn = ConvLearner.pretrained(arch, data, precompute=False)
 learn.load('299_pre')
-root = 'app_data/prediction_images/'
+root = 'images/'
 trn_tfms, val_tfms = tfms_from_model(arch, sz)
 
 def prediction(fn):
