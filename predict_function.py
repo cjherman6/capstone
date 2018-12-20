@@ -49,7 +49,7 @@ def pred_output(fn):
     dl = DataLoader(ds)
     preds = learn.predict_dl(dl)
     prediction = learn.data.classes[np.argmax(preds)]
-    prediction = ' '.join(prediction.split('_')).title()
+#     prediction = ' '.join(prediction.split('_')).title()
     return prediction
 
 def pred_likelies(fn):

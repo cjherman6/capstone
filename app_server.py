@@ -40,6 +40,7 @@ def send_image(filename):
 
 @app.route('/gallery')
 def get_gallery():
+    print('testing')
     predictions = []
     likelies = []
     target = os.path.join(APP_ROOT, 'images/')
@@ -47,7 +48,7 @@ def get_gallery():
     print(image_names)
     for image_name in image_names:
         destination = '/'.join([target,image_name])
-        predictions.append(pf.pred_output(destination))
+        predictions.append(' '.join(pf.pred_output(destination).split('_')).title())
         likelies.append(pf.pred_likelies(destination))
     print(predictions)
     print(likelies)
