@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Radio Check</title>
+</head>
+<body>
+  <!-- <h2>How active are you?</h2>
+      <form action="/display" method='POST'>
+        <div class="radio">
+          <label><input type="radio" name="optradio">Very Active</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio">Somewhat Active</label>
+        </div>
+        <div class="radio disabled">
+          <label><input type="radio" name="optradio">Not Active</label>
+        </div>
+        <button type="submit">Submit</button>
+      </form> -->
+
+  <h2>Tell us about yourself</h2>
+      <form action="/display" method='POST'>
+        <div class="radio">
+        <p>How active are you throughout the week?</p>
+          <!-- Value is what gets returned based on your response -->
+        <input type="radio" name="activity_level" id="option1" value="3"> Very Active </input><br>
+        <input type="radio" name="activity_level" id="option2" value="2"> Somewhat Active </input><br>
+        <input type="radio" name="activity_level" id="option3" value="1"> Not Active </input><br>
+        </div>
+
+        <div class="radio">
+        <p>How much time are you willing to spend tending to your dogs health & grooming?</p>
+          <!-- Value is what gets returned based on your response -->
+        <input type="radio" name="grooming" id="option1" value="3"> A lot </input><br>
+        <input type="radio" name="grooming" id="option2" value="2"> Sometime </input><br>
+        <input type="radio" name="grooming" id="option3" value="1"> Not a lot </input><br>
+        <button type="submit">Submit</button>
+        </div>
+
+      </form>
+</body>
+</html>
