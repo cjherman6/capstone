@@ -84,7 +84,7 @@ def recommendation():
 ########################################################################
 ########################################################################
 
-@app.route('/display',methods=['POST'])
+@app.route('/display',methods=['POST','GET'])
 def display():
     # Average values across all traits as a starting point
     profile = df.describe().T['mean'].values
