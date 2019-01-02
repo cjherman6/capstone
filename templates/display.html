@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset='UTF-8'>
   <title>Recommendation Results</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
   <h1>Recommendations</h1>
   <p>Recommendations are in descending order: {{ recommendations }}</p>
+
+  {% for image_name,prediction,likely in image_predictions %}
+  <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+  <img class="img-responsive" src=" {{ url_for('send_image',filename=image_name)  }}">
+  <h3>Prediction: {{ prediction }}</h3>
+  <h5>Other likely breeds:</h5>
+  <h5>{{ likely }}</h5>
+  </div>
+  {% endfor %}
 </body>
 </html>
