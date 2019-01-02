@@ -130,6 +130,7 @@ def display():
         print(destination)
         predictions.append(pf.pred_output(destination))
         print(pf.pred_output(destination))
+        print(translation_dict[pf.pred_output(destination)])
     print(predictions)
     breeds = [translation_dict[breed] for breed in predictions]
 
@@ -138,6 +139,8 @@ def display():
     recommendations = rf.profile_recommender(profile,breeds)
     print(recommendations)
     return render_template('display.html',profile=profile,recommendations=recommendations)
+
+    # return render_template('gallery.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
 
 
 if __name__ == "__main__":
