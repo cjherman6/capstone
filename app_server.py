@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, send_from_directory
 import predict_function as pf
 import recommender_function as rf
 import pickle
+df = pd.read_csv('app_data/breed_traits.csv',index_col='Unnamed: 0')
 
 app = Flask(__name__)
 
