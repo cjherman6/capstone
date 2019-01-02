@@ -122,17 +122,14 @@ def display():
     print(profile)
 
     # Retrieving predictions from images folder
-    predictions = []
+    predictions = {}
     target = os.path.join(APP_ROOT, 'images/')
     image_names = os.listdir('./images')
     for image_name in image_names:
         destination = '/'.join([target,image_name])
-        print(destination)
-        predictions.append(pf.pred_output(destination))
-        print(pf.pred_output(destination))
-        print(translation_dict[pf.pred_output(destination)])
+        predictions[translation_dict[pf.pred_output(destination)]] = destination
     print(predictions)
-    breeds = [translation_dict[breed] for breed in predictions]
+    breeds = list(predictions.keys())
 
     # Combining profile from radio buttons and predictions from images folder
     # to output recommendations
