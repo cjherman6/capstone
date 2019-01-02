@@ -81,7 +81,7 @@ def recommendation():
 ########################################################################
 
 @app.route('/radio',methods=['GET'])
-def index():
+def radio():
     return render_template('radio.html')
 
 @app.route('/display',methods=['POST'])
