@@ -5,11 +5,14 @@ from flask import Flask, render_template, request, send_from_directory
 import predict_function as pf
 import recommender_function as rf
 import pickle
-df = pd.read_csv('app_data/breed_traits.csv',index_col='Unnamed: 0')
 
 app = Flask(__name__)
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+df = pd.read_csv('app_data/breed_traits.csv',index_col='Unnamed: 0')
+pickle_in = open('app_data/translation_dict.pickle','rb')
+translation_dict = pickle.load(pickle_in)
 
 @app.route('/')
 def index():
@@ -62,8 +65,6 @@ def get_gallery():
 
 @app.route('/recommendation')
 def recommendation():
-    pickle_in = open('app_data/translation_dict.pickle','rb')
-    translation_dict = pickle.load(pickle_in)
     predictions = []
     target = os.path.join(APP_ROOT, 'images/')
     image_names = os.listdir('./images')
@@ -119,7 +120,16 @@ def display():
     profile = np.array([profile])
     print(profile)
 
-    recommendations = rf.profile_recommender(profile)
+    predictions = []
+    target = os.path.join(APP_ROOT, 'images/')
+    image_names = os.listdir('./images')
+    for image_name in image_names:
+        destination = '/'.join([target,image_name])
+        predictions.append(pf.pred_output(destination))
+    print(predictions)
+    breeds = [translation_dict[breed] for breed in predictions]
+
+    recommendations = rf.profile_recommender(profile,breeds)
     print(recommendations)
     return render_template('display.html',profile=profile,recommendations=recommendations)
 
