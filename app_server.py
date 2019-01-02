@@ -57,8 +57,6 @@ def get_gallery():
 
     return render_template('gallery.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
 
-
-
 @app.route('/recommendation')
 def recommendation():
     pickle_in = open('app_data/translation_dict.pickle','rb')
@@ -76,6 +74,56 @@ def recommendation():
     print(recommendations)
 
     return render_template('recommendation.html',predictions=predictions,recommendations=recommendations)
+
+########################################################################
+########################################################################
+########################################################################
+########################################################################
+
+@app.route('/radio',methods=['GET'])
+def index():
+    return render_template('radio.html')
+
+@app.route('/display',methods=['POST'])
+def display():
+    profile = df.describe().T['mean'].values
+
+    exercise_needs = request.form['exercise_needs']
+    apartment_ready = request.form['apartment_ready']
+    affection = request.form['affection']
+    fur_drool = request.form['fur_drool']
+    grooming = request.form['grooming']
+    trainability = request.form['trainability']
+    friendliness = request.form['friendliness']
+    kids = request.form['kids']
+    intelligence = request.form['intelligence']
+    sensitivity = request.form['sensitivity']
+    size = request.form['size']
+    tolerates_alone = request.form['tolerates_alone']
+
+    exercise_needs_i = np.array([2,12,13,19,21])
+    profile[exercise_needs_i] = exercise_needs
+    apartment_ready_i = np.array([0,5,16])
+    profile[apartment_ready_i] = apartment_ready
+    profile[6]= affection
+    fur_drool_i = np.array([7,9])
+    profile[fur_drool_i] = fur_drool
+    profile[10]= grooming
+    profile[np.array([4,11])] = trainability
+    profile[np.array([8,14])] = friendliness
+    profile[np.array([17,1])] = kids
+    profile[18] = intelligence
+    profile[24] = sensitivity
+    profile[25] = size
+    profile[27] = tolerates_alone
+
+    profile = np.array([profile])
+    print(profile)
+
+    recommendations = rf.profile_recommender(profile)
+    print(recommendations)
+    return render_template('display.html',profile=profile,recommendations=recommendations)
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
