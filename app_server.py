@@ -83,10 +83,6 @@ def recommendation():
 ########################################################################
 ########################################################################
 
-@app.route('/radio',methods=['GET'])
-def radio():
-    return render_template('radio.html')
-
 @app.route('/display',methods=['POST'])
 def display():
     profile = df.describe().T['mean'].values
