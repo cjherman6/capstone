@@ -138,7 +138,7 @@ def display():
     image_loc= [predictions[recommendation] for recommendation in recommendations]
     print(image_loc)
     return render_template('display.html',profile=profile,recommendations=recommendations,
-    image_recommendations=zip(recommendation,image_loc))
+    image_recommendations=zip(recommendations,image_loc))
 
     # return render_template('gallery.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
 
