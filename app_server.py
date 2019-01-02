@@ -86,8 +86,10 @@ def recommendation():
 
 @app.route('/display',methods=['POST'])
 def display():
+    # Average values across all traits as a starting point
     profile = df.describe().T['mean'].values
 
+    # Getting values from all radio buttons
     exercise_needs = request.form['exercise_needs']
     apartment_ready = request.form['apartment_ready']
     affection = request.form['affection']
@@ -101,6 +103,7 @@ def display():
     size = request.form['size']
     tolerates_alone = request.form['tolerates_alone']
 
+    # Assigning radio button values to an array
     exercise_needs_i = np.array([2,12,13,19,21])
     profile[exercise_needs_i] = exercise_needs
     apartment_ready_i = np.array([0,5,16])
@@ -120,6 +123,7 @@ def display():
     profile = np.array([profile])
     print(profile)
 
+    # Retrieving predictions from images folder
     predictions = []
     target = os.path.join(APP_ROOT, 'images/')
     image_names = os.listdir('./images')
@@ -129,6 +133,8 @@ def display():
     print(predictions)
     breeds = [translation_dict[breed] for breed in predictions]
 
+    # Combining profile from radio buttons and predictions from images folder
+    # to output recommendations
     recommendations = rf.profile_recommender(profile,breeds)
     print(recommendations)
     return render_template('display.html',profile=profile,recommendations=recommendations)
