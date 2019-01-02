@@ -41,7 +41,8 @@ def profile_recommender(profile,dist='cosine'):
     Output: 5 Breeds with most similar temperaments according to dogtime.com ratings
     '''
     y = profile
-    euc_dists = euclidean_distances(df.values,y)
+    X = df.loc[photo_list,:]
+    euc_dists = euclidean_distances(X.values,y)
     euc_ind = np.argsort(euc_dists.flatten())
     cos_dists = cosine_similarity(df.values,y)
     cos_ind = np.argsort(cos_dists.flatten())
