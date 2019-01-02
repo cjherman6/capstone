@@ -44,9 +44,9 @@ def profile_recommender(profile,photo_list,dist='cosine'):
     X = df.loc[photo_list,:]
     euc_dists = euclidean_distances(X.values,y)
     euc_ind = np.argsort(euc_dists.flatten())
-    cos_dists = cosine_similarity(df.values,y)
+    cos_dists = cosine_similarity(X.values,y)
     cos_ind = np.argsort(cos_dists.flatten())
     if dist == 'euclidean':
-        return [df.iloc[ind,:].name for ind in euc_ind][1:6]
+        return [X.iloc[ind,:].name for ind in euc_ind]
     elif dist == 'cosine':
-        return [df.iloc[ind,:].name for ind in cos_ind][::-1]
+        return [X.iloc[ind,:].name for ind in cos_ind][::-1]
