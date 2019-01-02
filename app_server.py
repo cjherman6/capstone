@@ -54,8 +54,10 @@ def get_gallery():
         likelies.append(pf.pred_likelies(destination))
     print(predictions)
     print(likelies)
-    
+
     return render_template('gallery.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
+
+
 
 @app.route('/recommendation')
 def recommendation():
@@ -72,7 +74,7 @@ def recommendation():
     print(breeds)
     recommendations = rf.predictions_recommender('cavalier-king-charles-spaniel',breeds)
     print(recommendations)
-    
+
     return render_template('recommendation.html',predictions=predictions,recommendations=recommendations)
 
 if __name__ == "__main__":
