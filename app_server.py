@@ -127,7 +127,9 @@ def display():
     image_names = os.listdir('./images')
     for image_name in image_names:
         destination = '/'.join([target,image_name])
+        print(destination)
         predictions.append(pf.pred_output(destination))
+        print(pf.pred_output(destination))
     print(predictions)
     breeds = [translation_dict[breed] for breed in predictions]
 
