@@ -135,7 +135,9 @@ def display():
     # to output recommendations
     recommendations = rf.profile_recommender(profile,breeds)
     print(recommendations)
-    return render_template('display.html',profile=profile,recommendations=recommendations)
+    image_loc=predictions[recommendations]
+    return render_template('display.html',profile=profile,recommendations=recommendations,
+    image_recommendations=zip(recommendation,image_loc))
 
     # return render_template('gallery.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
 
