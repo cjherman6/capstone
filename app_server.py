@@ -74,10 +74,8 @@ def recommendation():
     print(predictions)
     breeds = [translation_dict[breed] for breed in predictions]
     print(breeds)
-    recommendations = rf.predictions_recommender('cavalier-king-charles-spaniel',breeds)
-    print(recommendations)
 
-    return render_template('recommendation.html',predictions=predictions,recommendations=recommendations)
+    return render_template('recommendation.html',predictions=predictions)
 
 ########################################################################
 ########################################################################
