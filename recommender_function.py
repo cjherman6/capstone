@@ -35,7 +35,7 @@ def predictions_recommender(breed,photo_list,dist='cosine'):
     elif dist == 'cosine':
         return [X.iloc[ind,:].name for ind in cos_ind][::-1]
 
-def profile_recommender(profile,dist='cosine'):
+def profile_recommender(profile,photo_list,dist='cosine'):
     '''
     Input: Profile created from radio inputs (np array)
     Output: 5 Breeds with most similar temperaments according to dogtime.com ratings
@@ -49,4 +49,4 @@ def profile_recommender(profile,dist='cosine'):
     if dist == 'euclidean':
         return [df.iloc[ind,:].name for ind in euc_ind][1:6]
     elif dist == 'cosine':
-        return [df.iloc[ind,:].name for ind in cos_ind][-1:-6:-1]
+        return [df.iloc[ind,:].name for ind in cos_ind][::-1]
