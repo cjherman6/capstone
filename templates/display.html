@@ -5,6 +5,17 @@
   <title>Recommendation Results</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <style>
+  .row {
+    display: table;
+}
+
+[class*="col-"] {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+}
+  </style>
 </head>
 <body>
   <div class="grid">
@@ -16,13 +27,12 @@
       <hr>
       <p>Recommendations are in descending order: {{ recommendations }}</p>
       <hr>
-      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
       {% for recommendation,image_loc in image_recommendations %}
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
       <img class="img-responsive" src=" {{ url_for('send_image',filename=image_loc)  }}">
       <h3>Prediction: {{ recommendation }}</h3>
-      {% endfor %}
       </div>
-
+      {% endfor %}
 
     </div>
   </div>
