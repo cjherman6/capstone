@@ -46,7 +46,7 @@ def upload():
 def send_image(filename):
     return send_from_directory('images',filename)
 
-@app.route('/gallery')
+@app.route('/predictions')
 def get_gallery():
     print('testing')
     predictions = []
@@ -63,7 +63,7 @@ def get_gallery():
 
     return render_template('gallery.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
 
-@app.route('/recommendation')
+@app.route('/survey')
 def recommendation():
     predictions = []
     target = os.path.join(APP_ROOT, 'images/')
@@ -77,7 +77,7 @@ def recommendation():
 
     return render_template('recommendation.html',predictions=predictions)
 
-@app.route('/display',methods=['POST','GET'])
+@app.route('/recommendations',methods=['POST','GET'])
 def display():
     # Average values across all traits as a starting point
     profile = df.describe().T['mean'].values
