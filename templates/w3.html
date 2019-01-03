@@ -126,6 +126,9 @@ body, html {
     <span class="w3-xlarge">Upload</span><br>
     Photos Here
   </div>
+  <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+
+    <div class="form-group">
   <div class="w3-quarter w3-section">
     <label class='w3-button w3-light-grey' for="file-picker">
     <input id="file-picker" type="file" name="file" accept="image/*" multiple style="display:none">
@@ -137,6 +140,7 @@ body, html {
     <input class='w3-button w3-black' type="submit" value="Submit!" id="upload-button">
     </div>
   </div>
+  </form>
   <div class="w3-quarter w3-section">
     <span class="w3-xlarge">150+</span><br>
     Meetings
