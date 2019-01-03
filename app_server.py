@@ -77,11 +77,6 @@ def recommendation():
 
     return render_template('recommendation.html',predictions=predictions)
 
-########################################################################
-########################################################################
-########################################################################
-########################################################################
-
 @app.route('/display',methods=['POST','GET'])
 def display():
     # Average values across all traits as a starting point
