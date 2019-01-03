@@ -137,7 +137,7 @@ def display():
     image_recommendations=zip(recommendations,image_loc))
 
 @app.route('/w3')
-def index():
+def w3():
     string = 'dogs dogs dogs'
     return render_template('w3.html',string=string)
 
