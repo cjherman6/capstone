@@ -61,7 +61,7 @@ def get_gallery():
     print(predictions)
     print(likelies)
 
-    return render_template('gallery.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
+    return render_template('predictions.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
 
 @app.route('/survey')
 def recommendation():
@@ -75,7 +75,7 @@ def recommendation():
     # breeds = [translation_dict[breed] for breed in predictions]
     # print(breeds)
 
-    return render_template('recommendation.html',predictions=predictions)
+    return render_template('survey.html',predictions=predictions)
 
 @app.route('/recommendations',methods=['POST','GET'])
 def display():
@@ -133,7 +133,7 @@ def display():
     image_loc= [predictions[recommendation] for recommendation in recommendations]
     print(image_loc)
     recommendations = [' '.join(recommendation.split('-')) for recommendation in recommendations]
-    return render_template('display.html',profile=profile,recommendations=recommendations,
+    return render_template('recommendations.html',profile=profile,recommendations=recommendations,
     image_recommendations=zip(recommendations,image_loc))
 
 @app.route('/w3')
