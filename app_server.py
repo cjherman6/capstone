@@ -72,8 +72,8 @@ def recommendation():
         destination = '/'.join([target,image_name])
         predictions.append(' '.join(pf.pred_output(destination).split('_')).title())
     print(predictions)
-    breeds = [translation_dict[breed] for breed in predictions]
-    print(breeds)
+    # breeds = [translation_dict[breed] for breed in predictions]
+    # print(breeds)
 
     return render_template('recommendation.html',predictions=predictions)
 
