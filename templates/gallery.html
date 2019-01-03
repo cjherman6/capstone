@@ -33,33 +33,6 @@
     <hr>
     {% endfor %}
 
-<!-- ################################################ -->
-<!-- ################################################ -->
-<!-- ################################################ -->
-<!-- ################################################ -->
-
-<div class="container">
-
-  <div class="row">
-
-      <div class="col-lg-12">
-          <h1 class="page-header">Breed Predictions for Your Images</h1>
-      </div>
-      <hr>
-      {% for image_name,prediction,likely in image_predictions %}
-      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-      <img class="img-responsive" src=" {{ url_for('send_image',filename=image_name)  }}">
-      <h3>Prediction: {{ prediction }}</h3>
-      <h5>Other likely breeds:</h5>
-      <h5>{{ likely }}</h5>
-      </div>
-      {% endfor %}
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-              integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-              crossorigin="anonymous"></script>
-  </div>
-</div>
-
 <!-- Footer -->
 <footer class="w3-center w3-light-grey w3-padding-32">
   <h2><a href="recommendation" target="_blank" class="w3-hover-text-green">Let's Make Some Recommendations!</a></h2>
