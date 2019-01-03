@@ -132,7 +132,7 @@ def display():
     print(recommendations)
     image_loc= [predictions[recommendation] for recommendation in recommendations]
     print(image_loc)
-    recommendations = [' '.join(recommendation.split('_')) for recommendation in recommendations]
+    recommendations = [' '.join(recommendation.split('-').title()) for recommendation in recommendations]
     return render_template('display.html',profile=profile,recommendations=recommendations,
     image_recommendations=zip(recommendations,image_loc))
 
