@@ -80,7 +80,7 @@ body, html {
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">DOG <span class="w3-hide-small">{{string}}</span> RECOMMENDER</span>
+    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">DOG <span class="w3-hide-small">PHOTO</span> RECOMMENDER</span>
   </div>
 </div>
 
@@ -99,18 +99,25 @@ body, html {
       <p>The end goal of this project is to provide an easy to use interface that allows you to upload photos of potential dogs you're interested in, tell us a little bit about yourself, and output recommendations.</p>
     </div>
   </div>
-  <p class="w3-large w3-center w3-padding-16">Technologies Used:</p>
-  <p class="w3-wide"><i class="fa fa-laptop"></i>Fast.ai / PyTorch</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:100%">Neural Network</div>
-  </div>
-  <p class="w3-wide"><i class="fa fa-laptop"></i>Python</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:100%">Data Scraping / EDA</div>
-  </div>
-  <p class="w3-wide"><i class="fa fa-laptop"></i>Flask</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:100%">Website to be built</div>
+
+  <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+
+    <div class="form-group">
+    <strong>Files:</strong><br>
+
+    <label class='btn btn-primary' for="file-picker">
+    <input id="file-picker" type="file" name="file" accept="image/*" multiple style="display:none">
+    Upload
+    </label>
+    <div id="msg"></div>
+    </div>
+
+    <div class="form-group">
+    <input class='btn btn-success' type="submit" value="Submit!" id="upload-button">
+    </div>
+
+  </form>
+
   </div>
 </div>
 
@@ -144,6 +151,18 @@ body, html {
 <div class="w3-content w3-container w3-padding-64" id="portfolio">
   <h3 class="w3-center">MY WORK</h3>
   <p class="w3-center"><em>Here are some of my latest lorem work ipsum tipsum.<br> Click on the images to make them bigger</em></p><br>
+  <p class="w3-large w3-center w3-padding-16">Technologies Used:</p>
+  <p class="w3-wide"><i class="fa fa-laptop"></i>Fast.ai / PyTorch</p>
+  <div class="w3-light-grey">
+    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:100%">Neural Network</div>
+  </div>
+  <p class="w3-wide"><i class="fa fa-laptop"></i>Python</p>
+  <div class="w3-light-grey">
+    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:100%">Data Scraping / EDA</div>
+  </div>
+  <p class="w3-wide"><i class="fa fa-laptop"></i>Flask</p>
+  <div class="w3-light-grey">
+    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:100%">Website to be built</div>
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
@@ -276,6 +295,24 @@ function toggleFunction() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
+
+$("#file-picker").change(function(){
+    var input = document.getElementById('file-picker');
+    for (var i=0; i<input.files.length; i++)
+    {
+    //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+        var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+        if ((ext == 'jpg') || (ext == 'png')|| (ext == 'jpeg'))
+        {
+            $("#msg").text("Files are supported")
+        }
+        else
+        {
+            $("#msg").text("Files are NOT supported")
+            document.getElementById("file-picker").value ="";
+        }
+    }
+} );
 </script>
 
 </body>
