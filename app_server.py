@@ -136,8 +136,10 @@ def display():
     return render_template('display.html',profile=profile,recommendations=recommendations,
     image_recommendations=zip(recommendations,image_loc))
 
-    # return render_template('gallery.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
-
+@app.route('/w3')
+def index():
+    string = 'dogs dogs dogs'
+    return render_template('w3.html',string=string)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
