@@ -70,8 +70,7 @@ def recommendation():
     image_names = os.listdir('./images')
     for image_name in image_names:
         destination = '/'.join([target,image_name])
-        predictions.append(pf.pred_output(destination))
-    predictions = [' '.join(prediction.split('_').title()) for prediction in predictions]
+        predictions.append(' '.join(pf.pred_output(destination).split('_')).title())
     print(predictions)
     breeds = [translation_dict[breed] for breed in predictions]
     print(breeds)
