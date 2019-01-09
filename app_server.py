@@ -22,30 +22,16 @@ def index():
 @app.route('/upload',methods = ['POST'])
 def upload():
     target = os.path.join(APP_ROOT, 'images/')
-    # e.g. /Users/Chris/Desktop/app_restart/images/
-    print(target)
-
-    # if not os.path.isdir(target):
-    #     os.mkdir(target)
 
     if os.path.exists(target):
         shutil.rmtree(target)
     os.makedirs(target)
 
     for upload in request.files.getlist('file'):
-        # e.g. <FileStorage: 'dog2.jpeg' ('image/jpeg')>
-        print(upload)
         filename = upload.filename
-        # extension = os.path.splittext(filename)[1]
         destination = '/'.join([target,filename])
-        # e.g. /Users/Chris/Desktop/app_restart/images//dog2.jpeg
-        print(destination)
         upload.save(destination)
-    # jinja command takes in image_name for: {{ url_for('static',filename=image_name)  }}"
     return render_template('complete.html',image_name=filename)
-
-    # stores and downloads file
-    # return send_from_directory('images',filename,as_attachment=True)
 
 @app.route('/upload/<filename>')
 def send_image(filename):
@@ -140,11 +126,6 @@ def display():
     recommendations = [' '.join(recommendation.split('-')) for recommendation in recommendations]
     return render_template('recommendations.html',profile=profile,recommendations=recommendations,
     image_recommendations=zip(recommendations,image_loc))
-
-@app.route('/w3')
-def w3():
-    string = 'dogs dogs dogs'
-    return render_template('w3.html',string=string)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
