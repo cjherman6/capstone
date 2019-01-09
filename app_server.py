@@ -24,8 +24,12 @@ def upload():
     # e.g. /Users/Chris/Desktop/app_restart/images/
     print(target)
 
-    if not os.path.isdir(target):
-        os.mkdir(target)
+    # if not os.path.isdir(target):
+    #     os.mkdir(target)
+
+    if os.path.exists(dir):
+        shutil.rmtree(dir)
+    os.makedirs(dir)
 
     for upload in request.files.getlist('file'):
         # e.g. <FileStorage: 'dog2.jpeg' ('image/jpeg')>
