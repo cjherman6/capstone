@@ -32,6 +32,8 @@ learn.load('299_pre')
 root = 'images/'
 trn_tfms, val_tfms = tfms_from_model(arch, sz)
 
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 def pred_ind(fn):
     ds = FilesIndexArrayDataset([fn], np.array([0]), val_tfms,root)
     dl = DataLoader(ds)
