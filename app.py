@@ -71,7 +71,7 @@ def display():
     # to output recommendations
     rank, recommendations, image_loc = rf.rec_page_output(profile,breeds,predictions)
 
-    return render_template('recommendations.html',profile=profile,recommendations=recommendations,
+    return render_template('recommendations.html',recommendations=recommendations,
     image_recommendations=zip(rank, recommendations, image_loc))
 
 if __name__ == "__main__":
