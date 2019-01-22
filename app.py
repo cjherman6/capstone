@@ -67,7 +67,7 @@ def display():
     print("Profile Created: {}".format(profile))
 
     # Retrieving predictions from images folder
-    breeds = pf.image_predictions()
+    predictions,breeds = pf.image_predictions()
 
     # Combining profile from radio buttons and predictions from images folder
     # to output recommendations

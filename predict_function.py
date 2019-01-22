@@ -80,7 +80,7 @@ def image_predictions():
         destination = '/'.join([target,image_name])
         predictions[translation_dict[pred_ind(destination)]] = image_name
     breeds = list(predictions.keys())
-    return list(predictions.keys())
+    return predictions, breeds
 
 
 
