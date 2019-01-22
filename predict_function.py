@@ -57,8 +57,8 @@ def pred_output():
     image_names = os.listdir('./images')
     for image_name in image_names:
         destination = '/'.join([target,image_name])
-        predictions.append(' '.join(pf.pred_ind(destination).split('_')).title())
-        likelies.append(pf.pred_likelies(destination))
+        predictions.append(' '.join(pred_ind(destination).split('_')).title())
+        likelies.append(pred_likelies(destination))
     return predictions, likelies, image_names
 
 def prediction(fn):
