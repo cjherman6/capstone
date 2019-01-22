@@ -51,20 +51,6 @@ def display():
     # Average values across all traits as a starting point
     profile = rf.initial_profile()
 
-    # # Getting values from all radio buttons
-    # exercise_needs = request.form['exercise_needs']
-    # apartment_ready = request.form['apartment_ready']
-    # affection = request.form['affection']
-    # fur_drool = request.form['fur_drool']
-    # grooming = request.form['grooming']
-    # trainability = request.form['trainability']
-    # friendliness = request.form['friendliness']
-    # kids = request.form['kids']
-    # intelligence = request.form['intelligence']
-    # sensitivity = request.form['sensitivity']
-    # size = request.form['size']
-    # tolerates_alone = request.form['tolerates_alone']
-
     # Assigning radio button values to an array
     profile[np.array([2,12,13,19,21])] = request.form['exercise_needs']
     profile[np.array([0,5,16])] = request.form['apartment_ready']
