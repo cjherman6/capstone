@@ -20,6 +20,16 @@ def profile_recommender(profile,breed_list,dist='cosine'):
     elif dist == 'cosine':
         return [X.iloc[ind,:].name for ind in cos_ind][::-1]
 
+def initial_profile():
+    return df.describe().T['mean'].values
+
+def rec_page_output(profile,breeds,predictions):
+    recommendations = profile_recommender(profile,breeds)
+    image_loc= [predictions[recommendation] for recommendation in recommendations]
+    recommendations = [' '.join(recommendation.split('-')) for recommendation in recommendations]
+    rank = list(np.arange(len(recommendations))+1)
+    return rank, recommendations, image_loc
+
 def overall_recommender(profile,dist='cosine'):
     '''
     Input: Name of breed (string)
@@ -34,40 +44,3 @@ def overall_recommender(profile,dist='cosine'):
         return [df.iloc[ind,:].name for ind in euc_ind][1:6]
     elif dist == 'cosine':
         return [df.iloc[ind,:].name for ind in cos_ind][-1:-6:-1]
-
-def initial_profile():
-    return df.describe().T['mean'].values
-
-def rec_page_output(profile,breeds,predictions):
-    recommendations = profile_recommender(profile,breeds)
-    image_loc= [predictions[recommendation] for recommendation in recommendations]
-    recommendations = [' '.join(recommendation.split('-')) for recommendation in recommendations]
-    rank = list(np.arange(len(recommendations))+1)
-    return rank, recommendations, image_loc
-
-
-
-
-
-
-
-
-
-
-
-#
-# def predictions_recommender(breed,breed_list,dist='cosine'):
-#     '''
-#     Input: Name of breed (string), List of dogs you're considering (list)
-#     Output: Ordered list starting from most similar to least
-#     '''
-#     y = df.loc[[breed],:]
-#     X = df.loc[breed_list,:]
-#     euc_dists = euclidean_distances(X.values,y.values)
-#     euc_ind = np.argsort(euc_dists.flatten())
-#     cos_dists = cosine_similarity(X.values,y.values)
-#     cos_ind = np.argsort(cos_dists.flatten())
-#     if dist == 'euclidean':
-#         return [X.iloc[ind,:].name for ind in euc_ind]
-#     elif dist == 'cosine':
-#         return [X.iloc[ind,:].name for ind in cos_ind][::-1]
