@@ -7,7 +7,6 @@ from fastai.dataset import *
 from fastai.sgdr import *
 from fastai.plots import *
 
-
 # torch.cuda.set_device(0)
 
 PATH = "data/dogbreed/"
@@ -33,18 +32,7 @@ learn.load('299_pre')
 root = 'images/'
 trn_tfms, val_tfms = tfms_from_model(arch, sz)
 
-def prediction(fn):
-    img = plt.imread(root+fn)
-    plt.imshow(img);
-    ds = FilesIndexArrayDataset([fn], np.array([0]), val_tfms,root)
-    dl = DataLoader(ds)
-    preds = learn.predict_dl(dl)
-    prediction = learn.data.classes[np.argmax(preds)]
-    likelies = [learn.data.classes[breed] for breed in np.argsort(preds)[0][-5:]][3::-1]
-    print('Prediction: {}'.format(prediction.capitalize()))
-    print('Other likely breeds: {0}, {1}, {2}, {3}'.format(*likelies))
-
-def pred_output(fn):
+def pred_ind(fn):
     ds = FilesIndexArrayDataset([fn], np.array([0]), val_tfms,root)
     dl = DataLoader(ds)
     preds = learn.predict_dl(dl)
@@ -59,7 +47,25 @@ def pred_likelies(fn):
     likelies = [learn.data.classes[breed] for breed in np.argsort(preds)[0][-5:]][3::-1]
     likelies = [x.replace('-',' ').replace('_',' ').title() for x in likelies]
     return likelies
-    
-if __name__ == '__main__':
-    test_output = pred_output('boxer_test.jpeg')
-    print(test_output)
+
+def pred_output()
+    predictions = []
+    likelies = []
+    target = os.path.join(APP_ROOT, 'images/')
+    image_names = os.listdir('./images')
+    for image_name in image_names:
+        destination = '/'.join([target,image_name])
+        predictions.append(' '.join(pf.pred_ind(destination).split('_')).title())
+        likelies.append(pf.pred_likelies(destination))
+    return predictions, likelies, image_names
+
+def prediction(fn):
+    img = plt.imread(root+fn)
+    plt.imshow(img);
+    ds = FilesIndexArrayDataset([fn], np.array([0]), val_tfms,root)
+    dl = DataLoader(ds)
+    preds = learn.predict_dl(dl)
+    prediction = learn.data.classes[np.argmax(preds)]
+    likelies = [learn.data.classes[breed] for breed in np.argsort(preds)[0][-5:]][3::-1]
+    print('Prediction: {}'.format(prediction.capitalize()))
+    print('Other likely breeds: {0}, {1}, {2}, {3}'.format(*likelies))

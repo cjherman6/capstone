@@ -39,14 +39,7 @@ def send_image(filename):
 
 @app.route('/predictions')
 def get_gallery():
-    predictions = []
-    likelies = []
-    target = os.path.join(APP_ROOT, 'images/')
-    image_names = os.listdir('./images')
-    for image_name in image_names:
-        destination = '/'.join([target,image_name])
-        predictions.append(' '.join(pf.pred_output(destination).split('_')).title())
-        likelies.append(pf.pred_likelies(destination))
+    predictions, likelies, image_names = pred_output()
 
     return render_template('predictions.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
 
@@ -57,7 +50,7 @@ def recommendation():
     image_names = os.listdir('./images')
     for image_name in image_names:
         destination = '/'.join([target,image_name])
-        predictions.append(' '.join(pf.pred_output(destination).split('_')).title())
+        predictions.append(' '.join(pf.pred_ind(destination).split('_')).title())
 
     return render_template('survey.html',predictions=predictions)
 
@@ -106,7 +99,7 @@ def display():
     image_names = os.listdir('./images')
     for image_name in image_names:
         destination = '/'.join([target,image_name])
-        predictions[translation_dict[pf.pred_output(destination)]] = image_name
+        predictions[translation_dict[pf.pred_ind(destination)]] = image_name
     breeds = list(predictions.keys())
 
     # Combining profile from radio buttons and predictions from images folder
