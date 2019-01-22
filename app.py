@@ -40,18 +40,11 @@ def send_image(filename):
 @app.route('/predictions')
 def get_gallery():
     predictions, likelies, image_names = pf.pred_output()
-
     return render_template('predictions.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
 
 @app.route('/survey')
 def recommendation():
-    predictions = []
-    target = os.path.join(APP_ROOT, 'images/')
-    image_names = os.listdir('./images')
-    for image_name in image_names:
-        destination = '/'.join([target,image_name])
-        predictions.append(' '.join(pf.pred_ind(destination).split('_')).title())
-
+    predictions, _, _ = pf.pred_output()
     return render_template('survey.html',predictions=predictions)
 
 @app.route('/recommendations',methods=['POST','GET'])
