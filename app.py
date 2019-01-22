@@ -66,16 +66,11 @@ def display():
 
     # Retrieving predictions from images folder
     predictions,breeds = pf.image_predictions()
-    print('======= PREDICTIONS =======')
-    print(predictions)
-    print('======= BREEDS =======')
-    print(breeds)
 
     # Combining profile from radio buttons and predictions from images folder
     # to output recommendations
     recommendations, image_loc = rf.rec_page_output(profile,breeds,predictions)
-    print('======= RECOMMENDATIONS =======')
-    print(recommendations)
+
     return render_template('recommendations.html',profile=profile,recommendations=recommendations,
     image_recommendations=zip(recommendations,image_loc))
 
