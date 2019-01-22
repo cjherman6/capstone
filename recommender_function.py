@@ -4,6 +4,22 @@ from sklearn.metrics.pairwise import euclidean_distances,cosine_similarity
 
 df = pd.read_csv('app_data/breed_traits.csv',index_col='Unnamed: 0')
 
+def profile_recommender(profile,photo_list,dist='cosine'):
+    '''
+    Input: Profile created from radio inputs (np array)
+    Output: 5 Breeds with most similar temperaments according to dogtime.com ratings
+    '''
+    y = profile
+    X = df.loc[photo_list,:]
+    euc_dists = euclidean_distances(X.values,y)
+    euc_ind = np.argsort(euc_dists.flatten())
+    cos_dists = cosine_similarity(X.values,y)
+    cos_ind = np.argsort(cos_dists.flatten())
+    if dist == 'euclidean':
+        return [X.iloc[ind,:].name for ind in euc_ind]
+    elif dist == 'cosine':
+        return [X.iloc[ind,:].name for ind in cos_ind][::-1]
+
 def overall_recommender(breed,dist='cosine'):
     '''
     Input: Name of breed (string)
@@ -29,22 +45,6 @@ def predictions_recommender(breed,photo_list,dist='cosine'):
     euc_dists = euclidean_distances(X.values,y.values)
     euc_ind = np.argsort(euc_dists.flatten())
     cos_dists = cosine_similarity(X.values,y.values)
-    cos_ind = np.argsort(cos_dists.flatten())
-    if dist == 'euclidean':
-        return [X.iloc[ind,:].name for ind in euc_ind]
-    elif dist == 'cosine':
-        return [X.iloc[ind,:].name for ind in cos_ind][::-1]
-
-def profile_recommender(profile,photo_list,dist='cosine'):
-    '''
-    Input: Profile created from radio inputs (np array)
-    Output: 5 Breeds with most similar temperaments according to dogtime.com ratings
-    '''
-    y = profile
-    X = df.loc[photo_list,:]
-    euc_dists = euclidean_distances(X.values,y)
-    euc_ind = np.argsort(euc_dists.flatten())
-    cos_dists = cosine_similarity(X.values,y)
     cos_ind = np.argsort(cos_dists.flatten())
     if dist == 'euclidean':
         return [X.iloc[ind,:].name for ind in euc_ind]

@@ -107,15 +107,12 @@ def display():
     for image_name in image_names:
         destination = '/'.join([target,image_name])
         predictions[translation_dict[pf.pred_output(destination)]] = image_name
-    print(predictions)
     breeds = list(predictions.keys())
 
     # Combining profile from radio buttons and predictions from images folder
     # to output recommendations
     recommendations = rf.profile_recommender(profile,breeds)
-    print(recommendations)
     image_loc= [predictions[recommendation] for recommendation in recommendations]
-    print(image_loc)
     recommendations = [' '.join(recommendation.split('-')) for recommendation in recommendations]
     return render_template('recommendations.html',profile=profile,recommendations=recommendations,
     image_recommendations=zip(recommendations,image_loc))
