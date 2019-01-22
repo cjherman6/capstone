@@ -48,7 +48,7 @@ def pred_likelies(fn):
     likelies = [x.replace('-',' ').replace('_',' ').title() for x in likelies]
     return likelies
 
-def pred_output()
+def pred_output():
     predictions = []
     likelies = []
     target = os.path.join(APP_ROOT, 'images/')
