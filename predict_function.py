@@ -8,7 +8,7 @@ from fastai.sgdr import *
 from fastai.plots import *
 
 
-torch.cuda.set_device(0)
+# torch.cuda.set_device(0)
 
 PATH = "data/dogbreed/"
 sz = 224
