@@ -42,8 +42,8 @@ def rec_page_output(profile,breeds,predictions):
     recommendations = profile_recommender(profile,breeds)
     image_loc= [predictions[recommendation] for recommendation in recommendations]
     recommendations = [' '.join(recommendation.split('-')) for recommendation in recommendations]
-    len_recs = list(np.arange(len(recommendations))+1)
-    return len_recs, recommendations, image_loc
+    rank = list(np.arange(len(recommendations))+1)
+    return rank, recommendations, image_loc
 
 
 

@@ -69,10 +69,10 @@ def display():
 
     # Combining profile from radio buttons and predictions from images folder
     # to output recommendations
-    len_recs, recommendations, image_loc = rf.rec_page_output(profile,breeds,predictions)
+    rank, recommendations, image_loc = rf.rec_page_output(profile,breeds,predictions)
 
     return render_template('recommendations.html',profile=profile,recommendations=recommendations,
-    image_recommendations=zip(len_recs, recommendations, image_loc))
+    image_recommendations=zip(rank, recommendations, image_loc))
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

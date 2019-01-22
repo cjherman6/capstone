@@ -21,7 +21,7 @@
 
   <p class="w3-center">Recommendations are in descending order: {{ recommendations }}</p>
 
-  {% for recommendation,image_loc in image_recommendations %}
+  {% for rank,recommendation,image_loc in image_recommendations %}
   <!-- About Section -->
     <div class="w3-row w3-padding-64" id="about">
       <div class="w3-col m6 w3-padding-large w3-hide-small">
@@ -29,7 +29,7 @@
       </div>
 
       <div class="w3-col m6 w3-padding-large">
-        <h1 class="w3-center">{{ recommendation }}</h1><br>
+        <h1 class="w3-center">{{rank}}. {{ recommendation }}</h1><br>
       </div>
     </div>
     <hr>
