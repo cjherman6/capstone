@@ -11,7 +11,6 @@ app = Flask(__name__)
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-df = pd.read_csv('app_data/breed_traits.csv',index_col='Unnamed: 0')
 pickle_in = open('app_data/translation_dict.pickle','rb')
 translation_dict = pickle.load(pickle_in)
 
@@ -50,7 +49,7 @@ def recommendation():
 @app.route('/recommendations',methods=['POST','GET'])
 def display():
     # Average values across all traits as a starting point
-    profile = df.describe().T['mean'].values
+    profile = initial_profile()
 
     # Getting values from all radio buttons
     exercise_needs = request.form['exercise_needs']
