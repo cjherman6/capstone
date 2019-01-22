@@ -66,13 +66,10 @@ def display():
     tolerates_alone = request.form['tolerates_alone']
 
     # Assigning radio button values to an array
-    exercise_needs_i = np.array([2,12,13,19,21])
-    profile[exercise_needs_i] = exercise_needs
-    apartment_ready_i = np.array([0,5,16])
-    profile[apartment_ready_i] = apartment_ready
+    profile[np.array([2,12,13,19,21])] = exercise_needs
+    profile[np.array([0,5,16])] = apartment_ready
     profile[6]= affection
-    fur_drool_i = np.array([7,9])
-    profile[fur_drool_i] = fur_drool
+    profile[np.array([7,9])] = fur_drool
     profile[10]= grooming
     profile[np.array([4,11])] = trainability
     profile[np.array([8,14])] = friendliness
@@ -83,6 +80,7 @@ def display():
     profile[27] = tolerates_alone
 
     profile = np.array([profile])
+
     print("Profile Created: {}".format(profile))
 
     # Retrieving predictions from images folder
