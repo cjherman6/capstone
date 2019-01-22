@@ -30,6 +30,7 @@ def rec_page_output(profile,breeds,predictions):
     rank = list(np.arange(len(recommendations))+1)
     return rank, recommendations, image_loc
 
+#Makes recommendations without photos
 def overall_recommender(profile,dist='cosine'):
     '''
     Input: Name of breed (string)

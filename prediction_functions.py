@@ -8,7 +8,7 @@ from fastai.sgdr import *
 from fastai.plots import *
 
 # torch.cuda.set_device(0)
-# ^Uncomment if GPU is available^
+# ^Uncomment if GPU is available
 
 ###############################################################################
 ################# Setup Required for Fastai Model to Load #####################

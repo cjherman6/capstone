@@ -43,7 +43,7 @@ def recommendation():
 
 @app.route('/recommendations',methods=['POST','GET'])
 def display():
-    # Average values across all traits as a starting point
+    # Average values across all traits as an initial profile
     profile = rf.initial_profile()
 
     # Assigning radio button values to an array
