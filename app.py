@@ -39,7 +39,7 @@ def send_image(filename):
 
 @app.route('/predictions')
 def get_gallery():
-    predictions, likelies, image_names = pred_output()
+    predictions, likelies, image_names = pf.pred_output()
 
     return render_template('predictions.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
 
