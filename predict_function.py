@@ -78,7 +78,7 @@ def image_predictions():
     image_names = os.listdir('./images')
     for image_name in image_names:
         destination = '/'.join([target,image_name])
-        predictions[translation_dict[pf.pred_ind(destination)]] = image_name
+        predictions[translation_dict[pred_ind(destination)]] = image_name
     breeds = list(predictions.keys())
     return list(predictions.keys())
 
