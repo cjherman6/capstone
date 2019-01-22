@@ -8,6 +8,11 @@ from fastai.sgdr import *
 from fastai.plots import *
 
 # torch.cuda.set_device(0)
+# ^Uncomment if GPU is available^
+
+###############################################################################
+################# Setup Required for Fastai Model to Load #####################
+###############################################################################
 
 PATH = "data/dogbreed/"
 sz = 224
@@ -32,14 +37,20 @@ learn.load('299_pre')
 root = 'images/'
 trn_tfms, val_tfms = tfms_from_model(arch, sz)
 
+###############################################################################
+####################### Functions using Fastai Model ##########################
+###############################################################################
+
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+pickle_in = open('app_data/translation_dict.pickle','rb')
+translation_dict = pickle.load(pickle_in)
 
 def pred_ind(fn):
     ds = FilesIndexArrayDataset([fn], np.array([0]), val_tfms,root)
     dl = DataLoader(ds)
     preds = learn.predict_dl(dl)
     prediction = learn.data.classes[np.argmax(preds)]
-#     prediction = ' '.join(prediction.split('_')).title()
     return prediction
 
 def pred_likelies(fn):
@@ -61,7 +72,19 @@ def pred_output():
         likelies.append(pred_likelies(destination))
     return predictions, likelies, image_names
 
-def prediction(fn):
+def image_predictions():
+    predictions = {}
+    target = os.path.join(APP_ROOT, 'images/')
+    image_names = os.listdir('./images')
+    for image_name in image_names:
+        destination = '/'.join([target,image_name])
+        predictions[translation_dict[pf.pred_ind(destination)]] = image_name
+    breeds = list(predictions.keys())
+    return list(predictions.keys())
+
+
+
+def jupyter_prediction(fn):
     img = plt.imread(root+fn)
     plt.imshow(img);
     ds = FilesIndexArrayDataset([fn], np.array([0]), val_tfms,root)

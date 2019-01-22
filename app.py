@@ -11,9 +11,6 @@ app = Flask(__name__)
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-pickle_in = open('app_data/translation_dict.pickle','rb')
-translation_dict = pickle.load(pickle_in)
-
 @app.route('/')
 def index():
     return render_template('upload.html')
@@ -70,13 +67,7 @@ def display():
     print("Profile Created: {}".format(profile))
 
     # Retrieving predictions from images folder
-    predictions = {}
-    target = os.path.join(APP_ROOT, 'images/')
-    image_names = os.listdir('./images')
-    for image_name in image_names:
-        destination = '/'.join([target,image_name])
-        predictions[translation_dict[pf.pred_ind(destination)]] = image_name
-    breeds = list(predictions.keys())
+    breeds = pf.image_predictions()
 
     # Combining profile from radio buttons and predictions from images folder
     # to output recommendations
