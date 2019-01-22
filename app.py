@@ -73,9 +73,7 @@ def display():
 
     # Combining profile from radio buttons and predictions from images folder
     # to output recommendations
-    recommendations = rf.profile_recommender(profile,breeds)
-    image_loc= [predictions[recommendation] for recommendation in recommendations]
-    recommendations = [' '.join(recommendation.split('-')) for recommendation in recommendations]
+    recommendations = rec_page_output(profile,breeds,predictions)
     print('======= RECOMMENDATIONS =======')
     print(recommendations)
     return render_template('recommendations.html',profile=profile,recommendations=recommendations,

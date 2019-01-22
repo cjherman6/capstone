@@ -38,7 +38,11 @@ def overall_recommender(profile,dist='cosine'):
 def initial_profile():
     return df.describe().T['mean'].values
 
-
+def rec_page_output(profile,breeds,predictions):
+    recommendations = profile_recommender(profile,breeds)
+    image_loc= [predictions[recommendation] for recommendation in recommendations]
+    recommendations = [' '.join(recommendation.split('-')) for recommendation in recommendations]
+    return recommendations
 
 
 
