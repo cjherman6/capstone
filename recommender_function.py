@@ -4,13 +4,13 @@ from sklearn.metrics.pairwise import euclidean_distances,cosine_similarity
 
 df = pd.read_csv('app_data/breed_traits.csv',index_col='Unnamed: 0')
 
-def profile_recommender(profile,photo_list,dist='cosine'):
+def profile_recommender(profile,breed_list,dist='cosine'):
     '''
     Input: Profile created from radio inputs (np array)
     Output: 5 Breeds with most similar temperaments according to dogtime.com ratings
     '''
     y = profile
-    X = df.loc[photo_list,:]
+    X = df.loc[breed_list,:]
     euc_dists = euclidean_distances(X.values,y)
     euc_ind = np.argsort(euc_dists.flatten())
     cos_dists = cosine_similarity(X.values,y)
@@ -51,13 +51,13 @@ def initial_profile():
 
 
 #
-# def predictions_recommender(breed,photo_list,dist='cosine'):
+# def predictions_recommender(breed,breed_list,dist='cosine'):
 #     '''
 #     Input: Name of breed (string), List of dogs you're considering (list)
 #     Output: Ordered list starting from most similar to least
 #     '''
 #     y = df.loc[[breed],:]
-#     X = df.loc[photo_list,:]
+#     X = df.loc[breed_list,:]
 #     euc_dists = euclidean_distances(X.values,y.values)
 #     euc_ind = np.argsort(euc_dists.flatten())
 #     cos_dists = cosine_similarity(X.values,y.values)

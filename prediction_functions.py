@@ -84,6 +84,8 @@ def image_predictions():
 
 
 
+
+
 def jupyter_prediction(fn):
     img = plt.imread(root+fn)
     plt.imshow(img);

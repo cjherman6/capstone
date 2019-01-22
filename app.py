@@ -1,11 +1,9 @@
 import os
 import shutil
 import numpy as np
-import pandas as pd
-from flask import Flask, render_template, request, send_from_directory
-import predict_function as pf
+import prediction_functions as pf
 import recommender_function as rf
-import pickle
+from flask import Flask, render_template, request, send_from_directory
 
 app = Flask(__name__)
 
@@ -68,12 +66,18 @@ def display():
 
     # Retrieving predictions from images folder
     predictions,breeds = pf.image_predictions()
+    print('======= PREDICTIONS =======')
+    print(predictions)
+    print('======= BREEDS =======')
+    print(breeds)
 
     # Combining profile from radio buttons and predictions from images folder
     # to output recommendations
     recommendations = rf.profile_recommender(profile,breeds)
     image_loc= [predictions[recommendation] for recommendation in recommendations]
     recommendations = [' '.join(recommendation.split('-')) for recommendation in recommendations]
+    print('======= RECOMMENDATIONS =======')
+    print(recommendations)
     return render_template('recommendations.html',profile=profile,recommendations=recommendations,
     image_recommendations=zip(recommendations,image_loc))
 
