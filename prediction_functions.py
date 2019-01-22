@@ -81,18 +81,3 @@ def image_predictions():
         predictions[translation_dict[pred_ind(destination)]] = image_name
     breeds = list(predictions.keys())
     return predictions, breeds
-
-
-
-
-
-def jupyter_prediction(fn):
-    img = plt.imread(root+fn)
-    plt.imshow(img);
-    ds = FilesIndexArrayDataset([fn], np.array([0]), val_tfms,root)
-    dl = DataLoader(ds)
-    preds = learn.predict_dl(dl)
-    prediction = learn.data.classes[np.argmax(preds)]
-    likelies = [learn.data.classes[breed] for breed in np.argsort(preds)[0][-5:]][3::-1]
-    print('Prediction: {}'.format(prediction.capitalize()))
-    print('Other likely breeds: {0}, {1}, {2}, {3}'.format(*likelies))
