@@ -51,33 +51,33 @@ def display():
     # Average values across all traits as a starting point
     profile = rf.initial_profile()
 
-    # Getting values from all radio buttons
-    exercise_needs = request.form['exercise_needs']
-    apartment_ready = request.form['apartment_ready']
-    affection = request.form['affection']
-    fur_drool = request.form['fur_drool']
-    grooming = request.form['grooming']
-    trainability = request.form['trainability']
-    friendliness = request.form['friendliness']
-    kids = request.form['kids']
-    intelligence = request.form['intelligence']
-    sensitivity = request.form['sensitivity']
-    size = request.form['size']
-    tolerates_alone = request.form['tolerates_alone']
+    # # Getting values from all radio buttons
+    # exercise_needs = request.form['exercise_needs']
+    # apartment_ready = request.form['apartment_ready']
+    # affection = request.form['affection']
+    # fur_drool = request.form['fur_drool']
+    # grooming = request.form['grooming']
+    # trainability = request.form['trainability']
+    # friendliness = request.form['friendliness']
+    # kids = request.form['kids']
+    # intelligence = request.form['intelligence']
+    # sensitivity = request.form['sensitivity']
+    # size = request.form['size']
+    # tolerates_alone = request.form['tolerates_alone']
 
     # Assigning radio button values to an array
-    profile[np.array([2,12,13,19,21])] = exercise_needs
-    profile[np.array([0,5,16])] = apartment_ready
-    profile[6]= affection
-    profile[np.array([7,9])] = fur_drool
-    profile[10]= grooming
-    profile[np.array([4,11])] = trainability
-    profile[np.array([8,14])] = friendliness
-    profile[np.array([17,1])] = kids
-    profile[18] = intelligence
-    profile[24] = sensitivity
-    profile[25] = size
-    profile[27] = tolerates_alone
+    profile[np.array([2,12,13,19,21])] = request.form['exercise_needs']
+    profile[np.array([0,5,16])] = request.form['apartment_ready']
+    profile[6]= request.form['affection']
+    profile[np.array([7,9])] = request.form['fur_drool']
+    profile[10]= request.form['grooming']
+    profile[np.array([4,11])] = request.form['trainability']
+    profile[np.array([8,14])] = request.form['friendliness']
+    profile[np.array([17,1])] = request.form['kids']
+    profile[18] = request.form['intelligence']
+    profile[24] = request.form['sensitivity']
+    profile[25] = request.form['size']
+    profile[27] = request.form['tolerates_alone']
 
     profile = np.array([profile])
 
