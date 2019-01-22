@@ -98,7 +98,7 @@ def display():
     profile[27] = tolerates_alone
 
     profile = np.array([profile])
-    print("Profile Created: {}".format(profile)
+    print("Profile Created: {}".format(profile))
 
     # Retrieving predictions from images folder
     predictions = {}
