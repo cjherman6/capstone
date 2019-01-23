@@ -1,0 +1,37 @@
+###############################################################
+######################## Image Locations ##########################
+###############################################################
+
+IMAGE LOCS
+
+http://cdn.litlepups.net/2018/11/05/black-and-white-dog-wallpaper-amazing-wallpapers.jpg
+https://www.somepets.com/wp-content/gallery/hd-animal-background-wallpaper/1920x1200-black-Dog-HD-Animal-Wallpaper.jpg
+https://www.dogtagart.com/sites/default/files/styles/scale_width_1200/public/blog/smile4.jpg
+
+https://blog.marketo.com/content/uploads/2016/08/5-Things-Marketers-Can-Learn-From-Mans-Best-Friend.jpg
+
+https://cdn-images-1.medium.com/max/1200/1*lJ32Bl-lHWmNMUSiSq17gQ.png
+https://cdn-images-1.medium.com/max/1200/1*0AJuAsA3QAR8eeb4d3diHA.png
+https://avatars0.githubusercontent.com/u/365630?s=400&v=4
+https://sixfeetup.com/blog/an-introduction-to-beautifulsoup/@@images/9ee663df-82a4-4962-b84b-2a1620aa8c08.png
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSITzye6Yggo4r1O0wj7Y88DECyVtjmvVsoa2iVL3izlWXb5j5d
+https://blog.algorithmia.com/wp-content/uploads/2018/04/pytorch.jpg
+http://blog.klocwork.com/wp-content/uploads/fly-images/10699/python-logo-348x350-c.png
+
+https://financialengines.com/~/media/images/financial-engines-phoenix-az-careers.jpg
+
+https://desktopwalls.net/wp-content/uploads/2015/12/Dog%20Nose%20Close%20Up%20Desktop%20Wallpaper.jpg
+
+https://images.wallpaperscraft.com/image/bernese_mountain_dog_dog_snow_snowfall_119124_1350x2400.jpg
+
+###############################################################
+######################### CSS Locations ##########################
+###############################################################
+
+CSS
+https://www.w3schools.com/w3css/4/w3.css https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
+
+FONTS:
+https://fonts.googleapis.com/css?family=Lato
+https://fonts.googleapis.com/css?family=Montserrat
+https://fonts.googleapis.com/css?family=Raleway
