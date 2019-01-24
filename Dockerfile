@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 MAINTAINER Chris Herman "cjherman6@gmail.com"
 
-RUN apt-get update -y && \
+RUN apt-get update -y
 
 COPY . /app
 
