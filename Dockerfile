@@ -10,8 +10,7 @@ COPY . /app
 
 WORKDIR /app
 
-RUN ssh -i fastaiCapstone.pem ubuntu@52.2.104.31 -L8888:localhost:8888 && \
-    cd fastai && \
+RUN cd fastai && \
     git pull && \
     conda env update
 
