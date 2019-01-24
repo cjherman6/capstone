@@ -1,3 +1,4 @@
 data/
 fastai/
 images/
+__pycache__/
