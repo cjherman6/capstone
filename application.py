@@ -5,15 +5,15 @@ import prediction_functions as pf
 import recommender_function as rf
 from flask import Flask, render_template, request, send_from_directory
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-@app.route('/')
+@application.route('/')
 def index():
     return render_template('upload.html')
 
-@app.route('/upload',methods = ['POST'])
+@application.route('/upload',methods = ['POST'])
 def upload():
     target = os.path.join(APP_ROOT, 'images/')
 
@@ -27,21 +27,21 @@ def upload():
         upload.save(destination)
     return render_template('complete.html',image_name=filename)
 
-@app.route('/upload/<filename>')
+@application.route('/upload/<filename>')
 def send_image(filename):
     return send_from_directory('images',filename)
 
-@app.route('/predictions')
+@application.route('/predictions')
 def get_gallery():
     predictions, likelies, image_names = pf.pred_output()
     return render_template('predictions.html', image_names=image_names, image_predictions=zip(image_names,predictions,likelies))
 
-@app.route('/survey')
+@application.route('/survey')
 def recommendation():
     predictions, _, _ = pf.pred_output()
     return render_template('survey.html',predictions=predictions)
 
-@app.route('/recommendations',methods=['POST','GET'])
+@application.route('/recommendations',methods=['POST','GET'])
 def display():
     # Average values across all traits as an initial profile
     profile = rf.initial_profile()
@@ -75,4 +75,4 @@ def display():
     image_recommendations=zip(rank, recommendations, image_loc))
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    application.run(host='0.0.0.0', debug=True)
