@@ -11,9 +11,7 @@ COPY . /app
 
 WORKDIR /app
 
-RUN cd fastai && \
-    git pull && \
-    conda env update
+RUN pip3 install -r requirements.txt
 
 EXPOSE 5000
 
