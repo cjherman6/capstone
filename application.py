@@ -75,4 +75,4 @@ def display():
     image_recommendations=zip(rank, recommendations, image_loc))
 
 if __name__ == "__main__":
-    application.run(host='0.0.0.0', debug=True)
+    application.run(host='0.0.0.0')
