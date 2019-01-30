@@ -74,20 +74,20 @@ After RELU, this example goes through a *max pooling layer*, where it replaces e
 
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer3.png)
 
-In this example, the CNN combines the results of the previous convolutional layers (_This is where it becomes less intuitive what’s happening_)
+In this example, the CNN *combines* the results of the previous convolutional layers (_This is where it becomes less intuitive what’s happening_)
+
+A good example can be found here: [Convolutional Layer](http://cs231n.github.io/convolutional-networks/#conv)
 
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer4.png)
 
+*Repeat previous steps* multiple times: go through and add a new 3x3 convolutional filter that goes through the combined results of the previous layer, throw away negatives (RELU), max pull those results (max of each 2x2, and you have your next layer of your convolutional neural network
 
-++++
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer5.png)
-![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer6.png)
-
-A good example can be found here:
-[Convolutional Layer](http://cs231n.github.io/convolutional-networks/#conv)
 
 #### Fully Connected Layer
 Fully-connected layers can be found within the hidden layers, but the last fully-connected layer is called the “output layer”
+
+![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer6.png)
 
 ====================================================================================
 
