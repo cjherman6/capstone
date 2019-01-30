@@ -101,7 +101,6 @@ To this:
 
 ![doggo2](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/prediction.png)
 
-====================================================================================
 
 ## WHICH DOG IS THE BEST FIT FOR ME?
 ## Finding the Dog Closest to your Needs Using a Content Based Recommender
