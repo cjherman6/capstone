@@ -13,13 +13,41 @@ http://3.89.14.141:5000/
 ![Home Page](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/home_page.png)
 
 # METHODS USED
-### Convolutional Neural Network and Content Based Recommender
+### Convolutional Neural Network & Content Based Recommender
 
-## Convolutional Neural Network
+## Convolutional Neural Network (CNN)
 
-### The Data
+This app uses a CNN to let users upload various photos of dogs and get a prediction of what breed the dog could be.  The model is currently trained on 120 different dog breeds coming from the Kaggle Dog Breed Identification competition.  Adding 100+ more breeds is something I plan on expanding and building later on.
 
 ### How CNNs Work
+
+#### Convolutional Filter:
+
+A convolution consists of a little 3x3 matrix  (i.e. image kernel or filter) that multiplies every element of a photo matrix, and adds all the results of that multiplication:
+
+![kernel](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/kernel.png)
+
+When you input a photo, this can be converted into a matrix of pixels that represent the color or brightness in that pixel (grayscale, rgb, etc.):
+
+![pixelated](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/photo_pixels.png)
+
+Once this photo has been pixelated, you can pass the image kernel through each pixel of your image looking for activations.
+* Any time it passes over a feature it’s built to look for (e.g. top edge) you get a positive (figure a); this is called an activation.  
+* When it passes over a feature it’s not designed to detect, such as the opposite (e.g. bottom edge), you get a negative (figure b); or no activation at all, you get a low value (figure c)
+
+##### Figure A
+![activation](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/activation.png)
+_
+
+##### Figure B
+![negative](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/activation_negative.png)
+
+##### Figure C
+![non-activation](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/not_activation.png)
+
+
+A great example of how this works can be found here:
+![http://setosa.io/ev/image-kernels/](http://setosa.io/ev/image-kernels/)
 
 ====================================================================================
 ====================================================================================
