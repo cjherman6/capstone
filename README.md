@@ -105,6 +105,25 @@ To this:
 # WHICH DOG IS THE BEST FIT FOR ME?
 ## Finding the Dog Closest to your Needs Using a Content Based Recommender
 
-### The Data
+How do we find the breed that is closest to your preferences?  First we need to find data that can tell us the characteristics that come along with a breed (e.g. Are they dog friendly? How do they do in an apartment? Etc.).  In order to find information on breeds and their corresponding traits, I scraped the Breed Characteristics of every dog listed on dogtime.com using Beautiful Soup.  Once this information was scraped, I created a dense matrix with the breed as their row, and their corresponding traits as the columns.
 
-### How a Content Based Recommender Works
+![breed_traits](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/breed_traits.png)
+
+This model then uses a content-based recommender to calculate the similarities of your preferences to each breed.  After filling out a survey, your answers will be translated into a vector.
+
+This:
+![survey](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/survey.png)
+Outputs This:
+![vector](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/vector.png)
+
+This vector is then used to calculate the cosine similarity between your vector, and the vectors that correspond to the breeds that were predicted from your photos earlier.  Whichever has the closest similarity to your, is your recommended dog!
+
+![vector](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/vector.png)
+
+and that's how we go from this:
+
+![doggo1](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/dog2.jpeg)
+
+To this:
+
+![doggo2](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/prediction.png)
