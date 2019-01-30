@@ -11,3 +11,22 @@ To visit the website, click here:
 http://3.89.14.141:5000/
 
 ![Home Page](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/home_page.png)
+
+# METHODS USED
+### Convolutional Neural Network and Content Based Recommender
+
+## Convolutional Neural Network
+
+### The Data
+
+### How CNNs Work
+
+====================================================================================
+====================================================================================
+====================================================================================
+
+## Content Based Recommender
+
+### The Data
+
+### How a Content Based Recommender Works
