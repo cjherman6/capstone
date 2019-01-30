@@ -87,7 +87,18 @@ A good example can be found here: [Convolutional Layer](http://cs231n.github.io/
 #### Fully Connected Layer
 Fully-connected layers can be found within the hidden layers, but the last fully-connected layer is called the “output layer”
 
+* In this example, we multiply the elements of our max pulled layers by a weight matrix of the same size to give a weight to every activation, this will output one value, known as the Dense Activation; and you do this same calculation to get the Dense Activation of each class (e.g. A,B,C,D,E)
+* You can then calculate the exponent (e^(dense activation)) of each of these dense activations (this will exaggerate the differences in your labels), and use softmax to give you a percentage probability out of 1 for each label.
+
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer6.png)
+
+This is project does the same on 120 labels (dog breeds) and that's how we go from this:
+
+![doggo1](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/dog2.jpeg)
+
+To this:
+
+![doggo2](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/prediction.png)
 
 ====================================================================================
 
