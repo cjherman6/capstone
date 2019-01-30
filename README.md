@@ -21,7 +21,7 @@ This app uses a CNN to let users upload various photos of dogs and get a predict
 
 ### How CNNs Work
 
-#### Convolutional Filter:
+### Convolutional Filter:
 
 A convolution consists of a little 3x3 matrix  (i.e. image kernel or filter) that multiplies every element of a photo matrix, and adds all the results of that multiplication:
 
@@ -47,9 +47,41 @@ _Given the oppostite logic of the above photo we get a negative number_
 _Since the it is light in the upper row, and light in the lower row, they cancel each other out and there is no activation_
 ![non-activation](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/not_activation.png)
 
-
 A great example of how this works can be found here:
 [http://setosa.io/ev/image-kernels/](http://setosa.io/ev/image-kernels/)
+
+### Layers:
+
+A CNN consists of various layers (input layer, hidden layers, fully connected layer, output layer)
+
+A fantastic illustration of these various layers can be found on this video:
+[Convolutional Neural Network Visualization by Otavio Good](https://www.youtube.com/watch?v=f0t-OCG79-U)
+
+#### Input Layer
+This is the first layer, in the below example it's a letter, in our example it's a dog
+
+#### Hidden Layers
+
+The first layer in this example is a convolutional layer, going through the same behavior as the image kernel above.  Activations occur anytime a horizontal edge is passed over:
+
+![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer1.png)
+
+After all the activations have been recorded, a non-linear operation called RELU (Rectified Linear Unit) occurs where you're essentially tossing out any negative values (e.g. the red pixels in the previous photo)
+
+![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer2.png)
+
+
++++++++
+![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer3.png)
+![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer4.png)
+![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer5.png)
+![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer6.png)
+
+A good example can be found here:
+[Convolutional Layer](http://cs231n.github.io/convolutional-networks/#conv)
+
+#### Fully Connected Layer
+Fully-connected layers can be found within the hidden layers, but the last fully-connected layer is called the “output layer”
 
 ====================================================================================
 
