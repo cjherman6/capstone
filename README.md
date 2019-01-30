@@ -62,18 +62,24 @@ This is the first layer, in the below example it's a letter, in our example it's
 
 #### Hidden Layers
 
-The first layer in this example is a convolutional layer, going through the same behavior as the image kernel above.  Activations occur anytime a horizontal edge is passed over:
+The first layer in this example is a *convolutional layer*, going through the same behavior as the image kernel above.  Activations occur anytime a horizontal edge is passed over:
 
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer1.png)
 
-After all the activations have been recorded, a non-linear operation called RELU (Rectified Linear Unit) occurs where you're essentially tossing out any negative values (e.g. the red pixels in the previous photo)
+After all the activations have been recorded, a non-linear operation called *RELU* (_Rectified Linear Unit_) occurs where you're essentially tossing out any negative values (e.g. the red pixels in the previous photo)
 
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer2.png)
 
+After RELU, this example goes through a *max pooling layer*, where it replaces every 2x2 section of your previous layer its maximum (_keeps it the same, but quarters the size of the matrix_)
 
-+++++++
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer3.png)
+
+In this example, the CNN combines the results of the previous convolutional layers (_This is where it becomes less intuitive what’s happening_)
+
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer4.png)
+
+
+++++
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer5.png)
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer6.png)
 
