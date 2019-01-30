@@ -12,6 +12,16 @@ http://3.89.14.141:5000/
 
 ![Home Page](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/home_page.png)
 
+# TECHNOLOGIES USED
+* Python
+* Flask
+* BeautifulSoup
+* AWS
+* PyTorch
+* scikit-learn
+* Numpy & Pandas
+* HTML & CSS
+
 # METHODS USED
 ### Convolutional Neural Network & Content Based Recommender
 
@@ -112,15 +122,18 @@ How do we find the breed that is closest to your preferences?  First we need to 
 This model then uses a content-based recommender to calculate the similarities of your preferences to each breed.  After filling out a survey, your answers will be translated into a vector.
 
 This:
+
 ![survey](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/survey.png)
+
 Outputs This:
+
 ![vector](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/vector.png)
 
 This vector is then used to calculate the cosine similarity between your vector, and the vectors that correspond to the breeds that were predicted from your photos earlier.  Whichever has the closest similarity to your, is your recommended dog!
 
-![vector](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/vector.png)
+![vector](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/cosine.png)
 
-and that's how we go from this:
+And that's how we go from this:
 
 ![doggo1](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/many_dogs.png)
 
