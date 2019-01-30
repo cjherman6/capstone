@@ -36,21 +36,21 @@ Once this photo has been pixelated, you can pass the image kernel through each p
 * When it passes over a feature it’s not designed to detect, such as the opposite (e.g. bottom edge), you get a negative (figure b); or no activation at all, you get a low value (figure c)
 
 ##### Figure A
+_Since it's light (high value pixels) in the upper row of this kernel, and dark (low value pixels) in the lower row of this kernel, the upper row is not cancelled out and creates a high value (i.e. activation) of 845_
 ![activation](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/activation.png)
-_
 
 ##### Figure B
+_Given the oppostite logic of the above photo we get a negative number_
 ![negative](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/activation_negative.png)
 
 ##### Figure C
+_Since the it is light in the upper row, and light in the lower row, they cancel each other out and there is no activation_
 ![non-activation](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/not_activation.png)
 
 
 A great example of how this works can be found here:
-![http://setosa.io/ev/image-kernels/](http://setosa.io/ev/image-kernels/)
+[http://setosa.io/ev/image-kernels/](http://setosa.io/ev/image-kernels/)
 
-====================================================================================
-====================================================================================
 ====================================================================================
 
 ## Content Based Recommender
