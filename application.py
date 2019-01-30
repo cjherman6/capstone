@@ -75,7 +75,7 @@ def display():
     image_recommendations=zip(rank, recommendations, image_loc))
 
 @application.route('/methods')
-def recommendation():
+def methods():
     return render_template('methods.html')
 
 
