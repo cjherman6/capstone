@@ -93,7 +93,7 @@ Fully-connected layers can be found within the hidden layers, but the last fully
 
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer6.png)
 
-This is project does the same on 120 labels (dog breeds) and that's how we go from this:
+This project does the same on 120 labels (dog breeds) and that's how we go from this:
 
 ![doggo1](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/dog2.jpeg)
 
@@ -122,8 +122,8 @@ This vector is then used to calculate the cosine similarity between your vector,
 
 and that's how we go from this:
 
-![doggo1](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/dog2.jpeg)
+![doggo1](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/many_dogs.png)
 
 To this:
 
-![doggo2](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/prediction.png)
+![doggo2](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/many_dogs_reco.png)
