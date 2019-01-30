@@ -9,3 +9,5 @@ The initial motivation of this project was to experiment with image classificati
 To visit the website, click here:
 
 http://3.89.14.141:5000/
+
+![Home Page](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/home_page.png)
