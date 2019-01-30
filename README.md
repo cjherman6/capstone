@@ -15,7 +15,7 @@ http://3.89.14.141:5000/
 # METHODS USED
 ### Convolutional Neural Network & Content Based Recommender
 
-## WHAT BREED IS THIS DOG?
+# WHAT BREED IS THIS DOG?
 ## Breed Classification Using a Convolutional Neural Network (CNN)
 
 This app uses a CNN to let users upload various photos of dogs and get a prediction of what breed the dog could be.  The model is currently trained on 120 different dog breeds coming from the Kaggle Dog Breed Identification competition.  Adding 100+ more breeds is something I plan on expanding and building later on.
@@ -102,7 +102,7 @@ To this:
 ![doggo2](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/prediction.png)
 
 
-## WHICH DOG IS THE BEST FIT FOR ME?
+# WHICH DOG IS THE BEST FIT FOR ME?
 ## Finding the Dog Closest to your Needs Using a Content Based Recommender
 
 ### The Data
