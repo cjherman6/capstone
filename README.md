@@ -115,11 +115,11 @@ To this:
 # WHICH DOG IS THE BEST FIT FOR ME?
 ## Finding the Dog Closest to your Needs Using a Content Based Recommender
 
-How do we find the breed that is closest to your preferences?  First we need to find data that can tell us the characteristics that come along with a breed (e.g. Are they dog friendly? How do they do in an apartment? Etc.).  In order to find information on breeds and their corresponding traits, I scraped the Breed Characteristics of every dog listed on dogtime.com using Beautiful Soup.  Once this information was scraped, I created a dense matrix with the breed as their row, and their corresponding traits as the columns.
+How do we find the breed that is closest to your preferences?  First we need to find data that can tell us the characteristics that come along with a breed (e.g. Are they dog friendly? How do they do in an apartment? Etc.).  In order to find information on breeds and their corresponding traits, I scraped the breed characteristics of every dog listed on dogtime.com using Beautiful Soup.  Once this information was scraped, I created a dense matrix with the breed as their row, and their corresponding traits as the columns.
 
 ![breed_traits](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/breed_traits.png)
 
-This model then uses a content-based recommender to calculate the similarities of your preferences to each breed.  After filling out a survey, your answers will be translated into a vector.
+This model then uses a content-based recommender to calculate the similarities of your preferences to each breed.  After filling out a survey, your answers will be translated into a vector (row in a table).
 
 This:
 
