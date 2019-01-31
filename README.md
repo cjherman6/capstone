@@ -47,7 +47,7 @@ Once this photo has been pixelated, you can pass the image kernel through each p
 * When it passes over a feature it’s not designed to detect, such as the opposite (e.g. bottom edge), you get a negative (figure b); or no activation at all, you get a low value (figure c)
 
 ##### Figure A
-_Since it's light (high value pixels) in the upper row of this kernel, and dark (low value pixels) in the lower row of this kernel, the upper row is not cancelled out and creates a high value (i.e. activation) of 845_
+_Since it's light (high value pixels) in the upper row of this kernel, and dark (low value pixels) in the lower row of this kernel, the upper row is not cancelled out and this creates a high value (i.e. activation) of 845_
 ![activation](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/activation.png)
 
 ##### Figure B
@@ -55,7 +55,7 @@ _Given the oppostite logic of the above photo we get a negative number_
 ![negative](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/activation_negative.png)
 
 ##### Figure C
-_Since the it is light in the upper row, and light in the lower row, they cancel each other out and there is no activation_
+_Since it's light in the upper row, and light in the lower row, they cancel each other out and there is no activation (thus, the zero)_
 ![non-activation](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/not_activation.png)
 
 A great example of how this works can be found here:
@@ -69,11 +69,11 @@ A fantastic illustration of these various layers can be found on this video:
 [Convolutional Neural Network Visualization by Otavio Good](https://www.youtube.com/watch?v=f0t-OCG79-U)
 
 #### Input Layer
-This is the first layer, in the below example it's a letter, in our example it's a dog
+This is the first layer, in the below example it's a letter, in our example it's a photo of a dog
 
 #### Hidden Layers
 
-The first layer in this example is a *convolutional layer*, going through the same behavior as the image kernel above.  Activations occur anytime a horizontal edge is passed over:
+The first layer in this example is a *convolutional layer*, going through the same behavior as the image kernel above.  Activations occur anytime a horizontal edge is passed over (the green pixels):
 
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer1.png)
 
@@ -81,13 +81,13 @@ After all the activations have been recorded, a non-linear operation called *REL
 
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer2.png)
 
-After RELU, this example goes through a *max pooling layer*, where it replaces every 2x2 section of your previous layer its maximum (_keeps it the same, but quarters the size of the matrix_)
+After RELU, this example goes through a *max pooling layer*, where it replaces every 2x2 section of your previous layer with its maximum (_keeps the same essence, but quarters the size of the matrix_)
 
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer3.png)
 
 In this example, the CNN *combines* the results of the previous convolutional layers (_This is where it becomes less intuitive what’s happening_)
 
-A good example can be found here: [Convolutional Layer](http://cs231n.github.io/convolutional-networks/#conv)
+A good illustration of the matrix multiplications occuring can be found here: [Convolutional Layer](http://cs231n.github.io/convolutional-networks/#conv)
 
 ![conv-layer](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/layer4.png)
 
@@ -115,11 +115,11 @@ To this:
 # WHICH DOG IS THE BEST FIT FOR ME?
 ## Finding the Dog Closest to your Needs Using a Content Based Recommender
 
-How do we find the breed that is closest to your preferences?  First we need to find data that can tell us the characteristics that come along with a breed (e.g. Are they dog friendly? How do they do in an apartment? Etc.).  In order to find information on breeds and their corresponding traits, I scraped the breed characteristics of every dog listed on dogtime.com using Beautiful Soup.  Once this information was scraped, I created a dense matrix with the breed as their row, and their corresponding traits as the columns.
+How do we find the breed that's closest to your preferences?  First we need to find data that can tell us the characteristics that come along with a breed (e.g. Are they dog friendly? How do they do in an apartment? Etc.).  In order to find information on breeds and their corresponding traits, I scraped the breed characteristics of every dog listed on dogtime.com using Beautiful Soup.  Once this information was scraped, I created a dense matrix with the breed as their row, and their corresponding traits as the columns.
 
 ![breed_traits](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/breed_traits.png)
 
-This model then uses a content-based recommender to calculate the similarities of your preferences to each breed.  After filling out a survey, your answers will be translated into a vector (row in a table).
+This model then uses a content-based recommender to calculate the similarities of your preferences to each breed.  After filling out a survey, your answers will be translated into a vector (i.e. a row in a table).
 
 This:
 
