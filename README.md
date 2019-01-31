@@ -129,7 +129,7 @@ Outputs This:
 
 ![vector](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/vector.png)
 
-This vector is then used to calculate the cosine similarity between your vector, and the vectors that correspond to the breeds that were predicted from your photos earlier.  Whichever has the closest similarity to your, is your recommended dog!
+This vector is then used to calculate the cosine similarity between your vector, and the vectors that correspond to the breeds that were predicted from your photos earlier.  Whichever has the closest similarity to your survey results, is your recommended dog!
 
 ![vector](https://s3.amazonaws.com/capstone-bucket-galvd83/readme/cosine.png)
 
